@@ -9,20 +9,6 @@ import './App.css';
 
 class App extends Component {
   render() {
-    // const App = () => (
-    //   <div>
-    //     <Switch>
-    //       <Route exact path='/' component={Home} />
-    //       <Route path='/play' component={Game} />
-    //       <Route path='/highscore' component={LeaderBoard} />
-    //     </Switch>
-    //   </div>
-    // )
-    // return (
-    //   <Switch>
-    //     <App />
-    //   </Switch>
-    // );
     return (
       <Router>
         <Switch>
