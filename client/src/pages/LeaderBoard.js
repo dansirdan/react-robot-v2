@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 class LeaderBoard extends Component {
   render() {
@@ -7,9 +8,9 @@ class LeaderBoard extends Component {
       <div className="App">
         <h1>Leader Board</h1>
         <Link to={'./'}>
-          <button variant="raised">
+          <Button variant="primary">
             Home
-        </button>
+        </Button>
         </Link>
       </div>
     );

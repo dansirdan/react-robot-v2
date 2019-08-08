@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 class Home extends Component {
@@ -9,14 +10,14 @@ class Home extends Component {
         <h1>React Robot</h1>
         {/* Link to List.js */}
         <Link to={'./highscore'}>
-          <button variant="raised">
+          <Button variant="primary">
             High Scores TEST
-        </button>
+        </Button>
         </Link>
         <Link to={'./play'}>
-          <button variant="raised">
+          <Button variant="primary">
             Play Game
-        </button>
+        </Button>
         </Link>
       </div>
     );

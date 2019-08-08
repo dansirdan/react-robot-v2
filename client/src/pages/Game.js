@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 class Game extends Component {
   render() {
@@ -7,14 +8,14 @@ class Game extends Component {
       <div className="App">
         <h1>Game</h1>
         <Link to={'./'}>
-          <button variant="raised">
+          <Button variant="primary">
             Home
-        </button>
+          </Button>
         </Link>
         <Link to={'./highscore'}>
-          <button variant="raised">
+          <Button variant="primary">
             High Scores
-        </button>
+        </Button>
         </Link>
       </div>
     );
