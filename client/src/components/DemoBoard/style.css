@@ -1,0 +1,19 @@
+.rounded {
+  border-radius: 10rem!important;
+}
+
+.card {
+  background-color: black;
+  background-clip: none;
+  border: none;
+  /* border-radius: 10rem !important; */
+}
+
+#demoPiece {
+  padding: 10px;
+  margin: 0px;
+}
+
+.card-img {
+  max-width: 200px;
+}

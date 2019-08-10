@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Tutorial from './pages/Tutorial';
 import Game from './pages/Game';
 import LeaderBoard from './pages/LeaderBoard';
 
@@ -16,6 +17,11 @@ class App extends Component {
             exact
             path='/'
             component={Home}
+          />
+          <Route
+            exact
+            path='/tutorial'
+            component={Tutorial}
           />
           <Route
             exact

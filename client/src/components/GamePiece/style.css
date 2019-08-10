@@ -1,0 +1,33 @@
+.rounded {
+    border-radius: 10rem!important;
+}
+
+img { 
+  opacity: 0.7;
+  border: 2px solid black; 
+} 
+
+img:hover { 
+  opacity: 1;
+  border: 2px solid #8bcdd8;
+  box-shadow: 1px 1px 2px black, 0 0 1em #8bcdd8, 0 0 0.2em  #8bcdd8;
+}
+
+img:active {
+  opacity: .5;
+  border: 2px solid #8bcdd8;
+}
+
+.card {
+  background-color: #e9ecef;
+  background-clip: none;
+  border: none;
+}
+
+.card-img {
+  max-width: 200px;
+}
+
+#gamePiece {
+  padding: 10px;
+}
