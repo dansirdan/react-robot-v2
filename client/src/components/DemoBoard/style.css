@@ -1,19 +1,51 @@
-.rounded {
-  border-radius: 10rem!important;
+.game-screen {
+  position: relative;
+  width: 100%;
 }
 
-.card {
-  background-color: black;
-  background-clip: none;
-  border: none;
-  /* border-radius: 10rem !important; */
+.game-screen:after{
+  content: "";
+  display: block;
+  padding-bottom: 1px;
+}
+
+.square {
+  position: relative;
+  width: 50%;
+}
+
+.square:after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.rounded-demo {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+#demo1 {
+  background: red;
+}
+
+#demo2 {
+  background: blue;
+}
+
+#demo3 {
+  background: green;
+}
+
+#demo4 {
+  background: yellow;
 }
 
 #demoPiece {
+  background-color: black;
+  background-clip: none;
+  border: none;
   padding: 10px;
   margin: 0px;
-}
-
-.card-img {
-  max-width: 200px;
 }

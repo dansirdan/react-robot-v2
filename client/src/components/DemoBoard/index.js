@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import {
+  Row,
+  Col
+} from 'react-bootstrap';
 import "./style.css";
 
 class DemoBoard extends Component {
@@ -82,53 +86,51 @@ class DemoBoard extends Component {
   render() {
     return (
       <>
-        <div className="game-screen row">
-          <div className="col-6" id="demoPiece">
-            <div className="card">
-              <img className="card-img rounded" id="demo1" src="https://www.bhphotovideo.com/images/images500x500/Rosco_RS2611_26_Filter_Light_43957.jpg" alt="red"
+        <div className="game-screen">
+          <Row>
+            <Col lg='6' md='6' sm='6' className='square' id='demoPiece'>
+              <div className="rounded-demo"
+                id="demo1"
                 style={{
                   opacity: this.state.demo1 ? 1 : 0.7,
                   border: this.state.demo1 ? '2px solid #8bcdd8' : '2px solid black',
                   boxShadow: this.state.demo1 ? '1px 1px 2px black, 0 0 1em #8bcdd8, 0 0 0.2em #8bcdd8' : 'none'
                 }}
               />
-            </div>
-          </div>
-          <div className="col-6" id="demoPiece">
-            <div className="card">
-              <img className="card-img rounded" id="demo2" src="https://pe-images.s3.amazonaws.com/basics/shapes/blue-square.gif" alt="blue"
+            </Col>
+            <Col lg='6' md='6' sm='6' className='square' id='demoPiece'>
+              <div className="rounded-demo"
+                id="demo2"
                 style={{
                   opacity: this.state.demo2 ? 1 : 0.7,
                   border: this.state.demo2 ? '2px solid #8bcdd8' : '2px solid black',
                   boxShadow: this.state.demo2 ? '1px 1px 2px black, 0 0 1em #8bcdd8, 0 0 0.2em #8bcdd8' : 'none'
                 }}
               />
-            </div>
-          </div>
-        </div>
-        <div className="game-screen row">
-          <div className="col-6" id="demoPiece">
-            <div className="card">
-              <img className="card-img rounded" id="demo3" src="https://www.americasfinestlabels.com/includes/work/image_cache/a4cb211cac7697694b91b494f3620ca4.thumb.jpg" alt="green"
+            </Col>
+          </Row>
+          <Row>
+            <Col lg='6' md='6' sm='6' className='square' id='demoPiece'>
+              <div className="rounded-demo"
+                id="demo3"
                 style={{
                   opacity: this.state.demo3 ? 1 : 0.7,
                   border: this.state.demo3 ? '2px solid #8bcdd8' : '2px solid black',
                   boxShadow: this.state.demo3 ? '1px 1px 2px black, 0 0 1em #8bcdd8, 0 0 0.2em #8bcdd8' : 'none'
                 }}
               />
-            </div>
-          </div>
-          <div className="col-6" id="demoPiece">
-            <div className="card">
-              <img className="card-img rounded" id="demo4" src="http://www.esotericmeanings.com/wp-content/uploads/2016/07/meditation_visualisation_yellow_square-256.jpg" alt="yellow"
+            </Col>
+            <Col lg='6' md='6' sm='6' className='square' id='demoPiece'>
+              <div className="rounded-demo"
+                id="demo4"
                 style={{
                   opacity: this.state.demo4 ? 1 : 0.7,
                   border: this.state.demo4 ? '2px solid #8bcdd8' : '2px solid black',
                   boxShadow: this.state.demo4 ? '1px 1px 2px black, 0 0 1em #8bcdd8, 0 0 0.2em #8bcdd8' : 'none'
                 }}
               />
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
       </>
     )

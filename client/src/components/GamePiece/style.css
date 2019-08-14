@@ -1,33 +1,49 @@
-.rounded {
-    border-radius: 10rem!important;
+.game-screen {
+  position: relative;
+  width: 100%;
 }
 
-img { 
-  opacity: 0.7;
-  border: 2px solid black; 
-} 
+.game-screen:after{
+  content: "";
+  display: block;
+  padding-bottom: 1px;
+}
 
-img:hover { 
+.square {
+  position: relative;
+  width: 50%;
+}
+
+.square:after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.rounded-button {
+  border-radius: 50%;
+  opacity: 0.7;
+  border: 2px solid black;
+  height: 100%;
+  width: 100%;
+}
+
+.rounded-button:hover { 
   opacity: 1;
   border: 2px solid #8bcdd8;
   box-shadow: 1px 1px 2px black, 0 0 1em #8bcdd8, 0 0 0.2em  #8bcdd8;
 }
 
-img:active {
+.rounded-button:active {
   opacity: .5;
   border: 2px solid #8bcdd8;
 }
 
-.card {
-  background-color: #e9ecef;
+#gamePiece {
+  background-color: black;
   background-clip: none;
   border: none;
-}
-
-.card-img {
-  max-width: 200px;
-}
-
-#gamePiece {
   padding: 10px;
+  margin: 0px;
 }
+

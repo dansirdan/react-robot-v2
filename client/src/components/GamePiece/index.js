@@ -1,16 +1,26 @@
-import React from 'react';
-import './style.css';
+import React, { Component } from "react";
+import {
+  Row,
+  Col
+} from 'react-bootstrap';
+import "./style.css";
 
-function GamePiece(props) {
-  return (
-    <div className="col-6" id="gamePiece">
-      <div className="card">
-        <img className="card-img rounded" id={props.id} role="button" src={props.image} alt={props.color}
-          onClick={() => props.makeGuess(props.id)}
+class GamePiece extends Component {
+
+  render() {
+    return (
+      <Col lg='6' md='6' sm='6' className='square' id="gamePiece">
+        <div className="rounded-button"
+          id={this.props.id}
+          role="button"
+          onClick={() => this.props.makeGuess(this.props.id, this.props.sound)}
+          style={{
+            background: this.props.color
+          }}
         />
-      </div>
-    </div>
-  )
-}
+      </Col>
+    )
+  }
+};
 
 export default GamePiece;
