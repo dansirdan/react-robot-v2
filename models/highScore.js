@@ -1,13 +1,24 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = function (sequelize, DataTypes) {
 
-const scoreSchema = new Schema({
-  name: { type: String, required: true },
-  score: { type: Number, required: true },
-  level: { type: Number, required: true },
-  date: { type: Date, default: Date.now }
-});
+  const Score = sequelize.define("Score", {
 
-const Score = mongoose.model("Score", scoreSchema);
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [2],
+        notEmpty: true
+      }
+    },
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    level: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
+  });
 
-module.exports = Score;
+  return Score;
+};

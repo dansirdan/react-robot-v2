@@ -22,13 +22,15 @@ class GameOver extends Component {
     name: ""
   }
 
-  saveScore = scoreData => {
+  saveScore = (event) => {
+
+    event.preventDefault()
     API.saveScore({
-      name: scoreData.name,
-      score: scoreData.score,
-      level: scoreData.level
+      name: this.state.name,
+      score: this.props.score,
+      level: this.props.level
     })
-      .then(res => console.log(res))
+      .then(res => console.log(res.data))
       .catch(err => console.log(err))
   };
 
@@ -52,11 +54,7 @@ class GameOver extends Component {
             />
             <FormBtn
               disabled={!(this.state.name)}
-              onClick={() => this.saveScore({
-                name: this.state.name,
-                score: this.props.score,
-                level: this.props.score
-              })}
+              onClick={this.saveScore}
             >
               Submit
             </FormBtn>
