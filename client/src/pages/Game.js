@@ -12,6 +12,9 @@ import {
 import StatBar from '../components/StatBar';
 import GameBoard from '../components/GameBoard';
 import DemoBoard from '../components/DemoBoard';
+import Correct from "../components/Correct";
+import Incorrect from "../components/Incorrect";
+import LevelUp from "../components/LevelUp";
 import GameOver from '../components/GameOver';
 import RobotTalk from '../components/RobotTalk';
 
@@ -22,34 +25,42 @@ class Game extends Component {
     turn: 'init',
     score: 0,
     level: 1,
-    prgoress: 0,
+    progress: 0,
     lives: 3,
     gameArray: [],
     userArray: [],
     gameArrayLength: 3,
     robotTalk: "",
-    counter: 3,
+    counter: 1,
     clickCount: 0
   }
 
+  // state reset
   newGame = () => {
     this.setState({
-      gameMode: "play",
+      gameMode: 'play',
+      turn: 'init',
+      score: 0,
+      level: 1,
+      progress: 0,
+      lives: 3,
       gameArray: [],
       userArray: [],
-      clickCount: 0,
-      turn: "init",
       gameArrayLength: 3,
-      score: 0
+      robotTalk: "",
+      counter: 1,
+      clickCount: 0
     })
   }
 
+  // endGame without deleting the data
   endGame = () => {
     this.setState({
       gameMode: "gameOver"
     })
   }
 
+  // user's clicks are recorded and pushed to an array
   makeGuess = (id, sound) => {
 
     let noise = sound;
@@ -62,37 +73,71 @@ class Game extends Component {
     });
   }
 
-  win = () => {
-    if (this.state.counter % 4 === 0) {
-      this.setState({
-        gameArrayLength: this.state.gameArrayLength + 1,
-      })
-    }
+  // runs on correct array pattern input
+  correct = () => {
+
     this.setState({
+      score: this.state.score + 1000 * this.state.level,
+      progress: this.state.progress + 25,
       gameArray: [],
       userArray: [],
       clickCount: 0,
-      turn: "correct",
       counter: this.state.counter + 1,
-      score: this.state.score + 1,
+      robotTalk: ""
     })
+
+    this.checkProgress();
+
   }
 
-  lose = () => {
+  // checking the progress/level bar
+  checkProgress = () => {
+    if (this.state.counter === 4) {
+      this.changeProgress()
+    } else {
+      this.changeTurn('correct')
+    }
+  }
+
+  // change level and reset progress bar
+  changeProgress = () => {
+    this.changeTurn('level-up')
+    setTimeout(
+      function () {
+        this.setState({
+          level: this.state.level + 1,
+          gameArrayLength: this.state.gameArrayLength + 1,
+          progress: 0,
+          counter: 1
+        })
+      }.bind(this), 2000);
+  }
+
+  // runs on incorrect array input
+  incorrect = () => {
+
     this.setState({
       lives: this.state.lives - 1,
       gameArray: [],
       userArray: [],
       clickCount: 0,
-      turn: "incorrect"
+      robotTalk: ""
     })
-    if (this.state.lives === 0) {
-      this.endGame();
-    } else {
 
+    this.checkLives();
+
+  }
+
+  // ...
+  checkLives = () => {
+    if (this.state.lives === 1) {
+      this.endGame();
+    } else if (this.state.lives > 1) {
+      this.changeTurn("incorrect")
     }
   }
 
+  // setTimeout to see results
   showResults = () => {
     setTimeout(
       function () {
@@ -100,6 +145,7 @@ class Game extends Component {
       }.bind(this), 3000);
   }
 
+  // initialize game array based off of length and level
   handleGameArray = () => {
     let length = this.state.gameArrayLength;
     let RNG;
@@ -117,6 +163,7 @@ class Game extends Component {
     })
   }
 
+  // ...
   handleGameMode = () => {
     switch (this.state.gameMode) {
       case 'play':
@@ -125,19 +172,32 @@ class Game extends Component {
         )
       case 'gameOver':
         return (
-          <GameOver />
+          <GameOver
+            newGame={this.newGame}
+            score={this.state.score}
+            level={this.state.level}
+          />
         )
       default:
         break;
     }
   };
 
+  // ...does just that
   changeTurn = str => {
     this.setState({
       turn: str
     })
   };
 
+  // ...don't know if I use this
+  changeGameMode = str => {
+    this.setState({
+      gamemode: str
+    })
+  };
+
+  // ...
   handleTurn = () => {
     switch (this.state.turn) {
       case 'init':
@@ -159,16 +219,29 @@ class Game extends Component {
           />
         )
       case 'correct':
-        this.showResults();
-        return null
+        return (
+          <Correct
+            showResults={this.showResults}
+          />
+        )
       case 'incorrect':
-        this.showResults();
-        return null
+        return (
+          <Incorrect
+            showResults={this.showResults}
+          />
+        )
+      case 'level-up':
+        return (
+          <LevelUp
+            showResults={this.showResults}
+          />
+        )
       default:
         break;
     }
   }
 
+  // Main compare comp vs user array
   compareArrays = props => {
     if (!props.compare) {
       return (
@@ -179,10 +252,10 @@ class Game extends Component {
     }
 
     if (props.userArray.toString() !== props.gameArray.toString()) {
-      this.lose();
+      this.incorrect();
       return null
     } else if (props.userArray.toString() === props.gameArray.toString()) {
-      this.win();
+      this.correct();
       return null
     }
   }
@@ -193,8 +266,14 @@ class Game extends Component {
         <Jumbotron>
           <Row>
             <Col>
-              This is the stat bar
+              <StatBar
+                score={this.state.score}
+                level={this.state.level}
+                progress={this.state.progress}
+                lives={this.state.lives}
+              />
             </Col>
+
           </Row>
           <Row>
             <Col lg='3' md='3' sm='2' />
@@ -205,7 +284,7 @@ class Game extends Component {
           </Row>
           <Row>
             <Col>
-              This is the message div
+              {this.state.robotTalk}
             </Col>
           </Row>
         </Jumbotron>
