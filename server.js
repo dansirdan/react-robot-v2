@@ -32,8 +32,8 @@ const syncOptions = {
   force: true
 };
 
-db.sequelize.sync(syncOptions).then(function () {
-  app.listen(PORT, () => {
-    console.log(`🌎 ==> API server now on port ${PORT}!`);
-  });
+// db.sequelize.sync(syncOptions).then(function () {
+app.listen(PORT, () => {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+// });
