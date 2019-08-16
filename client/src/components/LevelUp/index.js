@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   Container,
-  Button,
+  // Button,
   ListGroup,
   ListGroupItem,
-  Col,
+  // Col,
   Row,
-  Jumbotron
+  // Jumbotron
 } from 'react-bootstrap';
 
 class LevelUp extends Component {

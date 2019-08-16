@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  Row,
+  // Row,
   Col
 } from 'react-bootstrap';
 import "./style.css";

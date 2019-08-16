@@ -16,7 +16,7 @@ import Correct from "../components/Correct";
 import Incorrect from "../components/Incorrect";
 import LevelUp from "../components/LevelUp";
 import GameOver from '../components/GameOver';
-import RobotTalk from '../components/RobotTalk';
+// import RobotTalk from '../components/RobotTalk';
 
 class Game extends Component {
 

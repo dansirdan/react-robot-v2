@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Container,
+  // Container,
   Nav,
   Col,
-  Row,
+  // Row,
   ProgressBar
 } from 'react-bootstrap';
 import './style.css';

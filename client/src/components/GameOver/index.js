@@ -9,9 +9,9 @@ import {
   Button,
   ListGroup,
   ListGroupItem,
-  Col,
+  // Col,
   Row,
-  Jumbotron,
+  // Jumbotron,
   Form
 } from 'react-bootstrap';
 import API from "../../utils/API"
@@ -22,9 +22,12 @@ class GameOver extends Component {
     name: ""
   }
 
-  saveScore = (event, scoreData) => {
-    event.preventDefault();
-    API.saveScore(scoreData)
+  saveScore = scoreData => {
+    API.saveScore({
+      name: scoreData.name,
+      score: scoreData.score,
+      level: scoreData.level
+    })
       .then(res => console.log(res))
       .catch(err => console.log(err))
   };
@@ -49,7 +52,7 @@ class GameOver extends Component {
             />
             <FormBtn
               disabled={!(this.state.name)}
-              onClick={(event) => this.saveScore(event, {
+              onClick={() => this.saveScore({
                 name: this.state.name,
                 score: this.props.score,
                 level: this.props.score
