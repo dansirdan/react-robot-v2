@@ -278,7 +278,7 @@ class Game extends Component {
           <Row>
             <Col lg='3' md='3' sm='2' />
             <Col lg='6' md='6' sm='8'>
-              <this.handleGameMode />
+              {this.handleGameMode()}
             </Col>
             <Col lg='3' md='3' sm='2' />
           </Row>
