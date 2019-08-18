@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import {
   Container,
-  // Button,
-  // ListGroup,
-  // ListGroupItem,
   Row,
   Col,
   Jumbotron
@@ -16,7 +12,6 @@ import Correct from "../components/Correct";
 import Incorrect from "../components/Incorrect";
 import LevelUp from "../components/LevelUp";
 import GameOver from '../components/GameOver';
-// import RobotTalk from '../components/RobotTalk';
 
 class Game extends Component {
 
@@ -271,9 +266,9 @@ class Game extends Component {
                 level={this.state.level}
                 progress={this.state.progress}
                 lives={this.state.lives}
+                robotTalk={this.state.robotTalk}
               />
             </Col>
-
           </Row>
           <Row>
             <Col lg='3' md='3' sm='2' />
@@ -281,11 +276,6 @@ class Game extends Component {
               {this.handleGameMode()}
             </Col>
             <Col lg='3' md='3' sm='2' />
-          </Row>
-          <Row>
-            <Col>
-              {this.state.robotTalk}
-            </Col>
           </Row>
         </Jumbotron>
       </Container>

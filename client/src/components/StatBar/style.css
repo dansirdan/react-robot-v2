@@ -3,7 +3,10 @@
   color: #8bcdd8 !important;
 }
 
-h6 {
+h2,
+h4,
+h6,
+hr {
   color: #8bcdd8 !important;
   text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
