@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Input,
-  FormBtn
+  Input
 } from "../Form";
 import {
   Container,
   Button,
   ListGroup,
   ListGroupItem,
-  // Col,
+  Col,
   Row,
-  // Jumbotron,
   Form
 } from 'react-bootstrap';
-import API from "../../utils/API"
+import API from "../../utils/API";
+import './style.css';
 
 class GameOver extends Component {
 
@@ -44,28 +43,38 @@ class GameOver extends Component {
   render() {
     return (
       <Container>
-        <Row className='justify-content-center text-center'>
-          <Form>
-            <Input
-              value={this.state.name}
-              onChange={this.handleInputChange}
-              name="name"
-              placeholder="Username (required)"
-            />
-            <FormBtn
-              disabled={!(this.state.name)}
-              onClick={this.saveScore}
-            >
-              Submit
-            </FormBtn>
-          </Form>
+        <Row className='text-center'>
+          <Col className='record-box'>
+            <h4>Record Your Score: {this.props.score}</h4>
+            <Form>
+              <Row>
+                <Col lg='2' md='2' sm='2' />
+                <Col>
+                  <Input
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                    name="name"
+                    placeholder="Username (required)"
+                  />
+                  <Button
+                    variant='success'
+                    disabled={!(this.state.name)}
+                    onClick={this.saveScore}
+                  >
+                    Submit
+                </Button>
+                </Col>
+                <Col lg='2' md='2' sm='2' />
+              </Row>
+            </Form>
+          </Col>
         </Row>
         <Row className='justify-content-center text-center'>
           <ListGroup>
-            <ListGroupItem as={Button} variant="light" onClick={() => this.props.newGame()}>
+            <ListGroupItem as={Button} className='btn-light' onClick={() => this.props.newGame()}>
               Play Again
             </ListGroupItem>
-            <ListGroupItem as={Link} action variant="light" to="./highscore">
+            <ListGroupItem as={Link} action variant="default" to="./highscore">
               High Scores
             </ListGroupItem>
           </ListGroup>

@@ -12,11 +12,12 @@ import Correct from "../components/Correct";
 import Incorrect from "../components/Incorrect";
 import LevelUp from "../components/LevelUp";
 import GameOver from '../components/GameOver';
+import RobotTalk from '../components/RobotTalk';
 
 class Game extends Component {
 
   state = {
-    gameMode: 'play',
+    gameMode: 'gameOver',
     turn: 'init',
     score: 0,
     level: 1,
@@ -45,6 +46,12 @@ class Game extends Component {
       robotTalk: "",
       counter: 1,
       clickCount: 0
+    })
+  }
+
+  resetRobotTalk = () => {
+    this.setState({
+      robotTalk: ""
     })
   }
 
@@ -78,7 +85,6 @@ class Game extends Component {
       userArray: [],
       clickCount: 0,
       counter: this.state.counter + 1,
-      robotTalk: ""
     })
 
     this.checkProgress();
@@ -116,7 +122,6 @@ class Game extends Component {
       gameArray: [],
       userArray: [],
       clickCount: 0,
-      robotTalk: ""
     })
 
     this.checkLives();
@@ -136,7 +141,8 @@ class Game extends Component {
   showResults = () => {
     setTimeout(
       function () {
-        this.changeTurn("init")
+        this.changeTurn("init");
+        this.resetRobotTalk();
       }.bind(this), 3000);
   }
 
@@ -259,23 +265,36 @@ class Game extends Component {
     return (
       <Container>
         <Jumbotron>
-          <Row>
-            <Col>
-              <StatBar
-                score={this.state.score}
-                level={this.state.level}
-                progress={this.state.progress}
-                lives={this.state.lives}
-                robotTalk={this.state.robotTalk}
-              />
-            </Col>
-          </Row>
+          {this.state.gameMode !== "gameOver" ?
+            (
+              <Row>
+                <Col>
+                  <StatBar
+                    score={this.state.score}
+                    level={this.state.level}
+                    progress={this.state.progress}
+                    lives={this.state.lives}
+                  />
+                </Col>
+              </Row>
+            )
+            :
+            <></>
+          }
+
           <Row>
             <Col lg='3' md='3' sm='2' />
             <Col lg='6' md='6' sm='8'>
               {this.handleGameMode()}
             </Col>
             <Col lg='3' md='3' sm='2' />
+          </Row>
+          <Row>
+            <Col>
+              <RobotTalk
+                robotTalk={this.state.robotTalk}
+              />
+            </Col>
           </Row>
         </Jumbotron>
       </Container>
