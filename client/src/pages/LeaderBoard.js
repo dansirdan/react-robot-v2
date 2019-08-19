@@ -15,18 +15,40 @@ import API from '../utils/API';
 class LeaderBoard extends Component {
 
   state = {
-    topTen: []
+    topTen: [],
+    nullData: {
+      name: "n/a",
+      score: "n/a",
+      level: "n/a"
+    }
   }
 
   componentWillMount = () => {
+
+    let allScores = [];
+
     API.getScores()
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data)
+
+        res.data.forEach(score => {
+          allScores.push(score);
+        });
+
+        this.setState({
+          topTen: allScores
+        })
+
+        console.log(this.state.topTen)
+      })
       .catch(err => console.log(err))
   }
 
   render() {
-    return (
 
+    let count = 0;
+
+    return (
       <Container>
         <Jumbotron>
           <Row className='justify-content-center text-center'>
@@ -41,10 +63,32 @@ class LeaderBoard extends Component {
                   <th>Score</th>
                   <th>Level</th>
                 </tr>
-                <tbody>
-                  {}
-                </tbody>
               </thead>
+              <tbody>
+                {
+                  this.state.topTen.length > 0 ?
+                    (this.state.topTen.map(data => {
+                      return (
+                        <tr>
+                          <td>{count += 1}</td>
+                          <td>{data.name}</td>
+                          <td>{data.score}</td>
+                          <td>{data.level}</td>
+                        </tr>
+                      )
+                    }))
+                    :
+                    (
+                      <tr>
+                        <td>0</td>
+                        <td>{this.state.nullData.name}</td>
+                        <td>{this.state.nullData.score}</td>
+                        <td>{this.state.nullData.level}</td>
+                      </tr>
+                    )
+
+                }
+              </tbody>
             </Table>
           </Row>
           <Row className='justify-content-center text-center'>

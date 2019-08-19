@@ -17,7 +17,7 @@ import RobotTalk from '../components/RobotTalk';
 class Game extends Component {
 
   state = {
-    gameMode: 'gameOver',
+    gameMode: 'play',
     turn: 'init',
     score: 0,
     level: 1,
