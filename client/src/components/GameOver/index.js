@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Input
-} from "../Form";
+import ScoreForm from '../ScoreForm';
 import {
   Container,
   Button,
   ListGroup,
   ListGroupItem,
   Col,
-  Row,
-  Form
+  Row
 } from 'react-bootstrap';
-import API from "../../utils/API";
 import './style.css';
 
 class GameOver extends Component {
@@ -21,20 +17,22 @@ class GameOver extends Component {
     name: ""
   }
 
-  saveScore = (event) => {
+  // saveScore = (newScorer) => {
 
-    event.preventDefault()
-    API.saveScore({
-      name: this.state.name,
-      score: this.props.score,
-      level: this.props.level
-    })
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err))
-  };
+  //   console.log(newScorer);
+
+  //   API.saveScore({
+  //     name: newScorer,
+  //     score: this.props.score,
+  //     level: this.props.level
+  //   })
+  //     .then(res => console.log(res.data))
+  //     .catch(err => console.log(err))
+  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
+
     this.setState({
       [name]: value
     });
@@ -46,27 +44,11 @@ class GameOver extends Component {
         <Row className='text-center'>
           <Col className='record-box'>
             <h4>Record Your Score: {this.props.score}</h4>
-            <Form>
-              <Row>
-                <Col lg='2' md='2' sm='2' />
-                <Col>
-                  <Input
-                    value={this.state.name}
-                    onChange={this.handleInputChange}
-                    name="name"
-                    placeholder="Username (required)"
-                  />
-                  <Button
-                    variant='success'
-                    disabled={!(this.state.name)}
-                    onClick={this.saveScore}
-                  >
-                    Submit
-                </Button>
-                </Col>
-                <Col lg='2' md='2' sm='2' />
-              </Row>
-            </Form>
+            <ScoreForm
+              // saveScore={this.saveScore}
+              score={this.props.score}
+              level={this.props.level}
+            />
           </Col>
         </Row>
         <Row className='justify-content-center text-center'>
@@ -74,7 +56,7 @@ class GameOver extends Component {
             <ListGroupItem as={Button} className='btn-light' onClick={() => this.props.newGame()}>
               Play Again
             </ListGroupItem>
-            <ListGroupItem as={Link} action variant="default" to="./highscore">
+            <ListGroupItem as={Link} action variant="default" className='btn-success' to="./highscore">
               High Scores
             </ListGroupItem>
           </ListGroup>

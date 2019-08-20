@@ -6,7 +6,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2],
+        is: ["^[a-z]+$", 'i'],
+        len: [3],
         notEmpty: true
       }
     },

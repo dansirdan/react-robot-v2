@@ -17,12 +17,12 @@ import RobotTalk from '../components/RobotTalk';
 class Game extends Component {
 
   state = {
-    gameMode: 'play',
+    gameMode: 'gameOver',
     turn: 'init',
     score: 0,
     level: 1,
     progress: 0,
-    lives: 3,
+    lives: 1,
     gameArray: [],
     userArray: [],
     gameArrayLength: 3,
