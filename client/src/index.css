@@ -5,12 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SdC710cgzjajkibtg/videoblocks-printed-circuit-board-video-motherboard-blue-and-purple-digital-technology-background_hjzpzqrwz_thumbnail-full01.png");
+  background-color: #110232;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
   monospace;
 }
+
+/* .main-container {
+  border: 1px solid #ee0eb9;
+  box-shadow: 1px 1px 2px black, 0 0 1em #7f004e, 0 0 0.2em #e70eef;
+} */
 
 .container {
   margin-top: 4%;
@@ -23,6 +30,8 @@ input {
 
 .jumbotron {
   border-radius: 20px;
+  border: 1px solid #ee0eb9;
+  box-shadow: 1px 1px 2px black, 0 0 1em #7f004e, 0 0 0.2em #e70eef;
   background: black;
 }
 

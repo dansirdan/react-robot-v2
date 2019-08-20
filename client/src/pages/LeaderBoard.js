@@ -47,7 +47,7 @@ class LeaderBoard extends Component {
     let count = 0;
 
     return (
-      <Container>
+      <Container className='main-container'>
         <Jumbotron>
           <Row className='justify-content-center text-center'>
             <Col>

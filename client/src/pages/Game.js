@@ -67,7 +67,6 @@ class Game extends Component {
 
     let noise = sound;
 
-    console.log(id, sound);
     this.setState({
       robotTalk: this.state.robotTalk + " " + noise,
       userArray: [...this.state.userArray, id],
@@ -156,7 +155,6 @@ class Game extends Component {
       RNG = Math.ceil(Math.random() * 4);
       initArray.push(RNG);
     }
-    console.log(initArray);
 
     this.setState({
       turn: "comp",
@@ -263,7 +261,7 @@ class Game extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className='main-container'>
         <Jumbotron>
           {this.state.gameMode !== "gameOver" ?
             (

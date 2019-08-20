@@ -11,7 +11,7 @@ import {
 
 function Home() {
   return (
-    <Container>
+    <Container className='main-container'>
       <Jumbotron>
         <Row className="justify-content-center text-center">
           <Col>
@@ -21,9 +21,9 @@ function Home() {
         </Row>
         <Row className="justify-content-center text-center">
           <ListGroup>
-            <ListGroupItem as={Link} action variant="default" to="./tutorial">
-              Tutorial
-              </ListGroupItem>
+            {/* <ListGroupItem as={Link} action variant="default" to="./tutorial">
+              Tutorial "coming soon"
+              </ListGroupItem> */}
             <ListGroupItem as={Link} action variant="default" to="./play">
               Play
               </ListGroupItem>

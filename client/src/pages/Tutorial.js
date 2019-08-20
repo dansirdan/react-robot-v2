@@ -8,7 +8,7 @@ import ControlledCarousel from '../components/Carousel';
 function Tutorial() {
 
   return (
-    <Container>
+    <Container className='main-container'>
       <Jumbotron>
         <ControlledCarousel />
       </Jumbotron>
