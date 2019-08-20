@@ -5,26 +5,29 @@ import {
   ListGroup,
   ListGroupItem,
   Row,
+  Col,
   Jumbotron
 } from 'react-bootstrap';
-
 
 function Home() {
   return (
     <Container>
       <Jumbotron>
-        <Row className="justify-content-center">
-          <h1>REACT ROBOT</h1>
+        <Row className="justify-content-center text-center">
+          <Col>
+            <h1>REACT ROBOT</h1>
+            <hr />
+          </Col>
         </Row>
         <Row className="justify-content-center text-center">
           <ListGroup>
-            <ListGroupItem as={Link} action variant="light" to="./tutorial">
+            <ListGroupItem as={Link} action variant="default" to="./tutorial">
               Tutorial
               </ListGroupItem>
-            <ListGroupItem as={Link} action variant="light" to="./play">
+            <ListGroupItem as={Link} action variant="default" to="./play">
               Play
               </ListGroupItem>
-            <ListGroupItem as={Link} action variant="light" to="./highscore">
+            <ListGroupItem as={Link} action variant="default" to="./highscore">
               High Scores
               </ListGroupItem>
           </ListGroup>

@@ -9,5 +9,80 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
+}
+
+.container {
+  margin-top: 4%;
+  max-width: 500px;
+}
+
+input {
+  text-align: center;
+}
+
+.jumbotron {
+  border-radius: 20px;
+  background: black;
+}
+
+.score-input {
+  background-color: #8bcdd8;
+}
+
+hr {
+  border-color: #8bcdd8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.input-feedback {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New";
+  color: #8bcdd8;
+  text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+.progress {
+  margin: 10px 0px 10px 0px;
+}
+
+.btn-default,
+.btn-primary,
+.list-group-item,
+.list-group-item-light {
+  margin-bottom: 20px;
+  color: #8bcdd8;
+  text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+  background-color: darkblue;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+.btn-default:disabled,
+.btn-primary:disabled {
+  text-shadow: none;
+  color: #8bcdd8;
+  background-color: black;
+  border: 1px solid black;
+  box-shadow: none;
+}
+
+.btn-default:hover,
+.btn-primary:hover,
+.list-group-item:hover,
+.list-group-item-light:hover {
+  background-color: #8bcdd8;
+  color: black;
+  border: 1px solid black;
+  text-shadow: none;
+}
+
+.list-group-item:first-child,
+.list-group-item:last-child,
+.list-group-item {
+  border-radius: 10px;
 }

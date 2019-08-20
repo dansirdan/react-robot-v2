@@ -32,7 +32,10 @@ function ScoreForm(props) {
           score: props.score,
           level: props.level
         })
-          .then(res => console.log(res.data))
+          .then(res => {
+            console.log(res.data)
+            props.successRedirect();
+          })
           .catch(err => console.log(err))
 
       }}
@@ -58,6 +61,7 @@ function ScoreForm(props) {
                   value={values.userInt}
                   onChange={handleChange}
                   isValid={touched.userInt && !errors.userInt}
+                  className='score-input'
                 />
                 {<div className="input-feedback">{errors.userInt}</div>}
               </Form.Group>

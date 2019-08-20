@@ -4,7 +4,7 @@ module.exports = {
   findAll: function (req, res) {
     db.Score
       .findAll({
-        limit: 10,
+        limit: 5,
         order: [
           ['score', 'DESC'],
           ['updatedAt', 'DESC']

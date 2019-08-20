@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import ScoreForm from '../ScoreForm';
 import {
   Container,
@@ -14,54 +14,51 @@ import './style.css';
 class GameOver extends Component {
 
   state = {
-    name: ""
+    successfulSubmit: false
   }
 
-  // saveScore = (newScorer) => {
-
-  //   console.log(newScorer);
-
-  //   API.saveScore({
-  //     name: newScorer,
-  //     score: this.props.score,
-  //     level: this.props.level
-  //   })
-  //     .then(res => console.log(res.data))
-  //     .catch(err => console.log(err))
-  // };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-
+  successRedirect = () => {
     this.setState({
-      [name]: value
-    });
-  };
+      successfulSubmit: true
+    })
+  }
 
   render() {
     return (
-      <Container>
-        <Row className='text-center'>
-          <Col className='record-box'>
-            <h4>Record Your Score: {this.props.score}</h4>
-            <ScoreForm
-              // saveScore={this.saveScore}
-              score={this.props.score}
-              level={this.props.level}
-            />
-          </Col>
-        </Row>
-        <Row className='justify-content-center text-center'>
-          <ListGroup>
-            <ListGroupItem as={Button} className='btn-light' onClick={() => this.props.newGame()}>
-              Play Again
+
+      this.state.successfulSubmit ?
+        (
+          <Redirect to="/highscore" />
+        )
+        :
+        (
+          <Container>
+            <Row className='text-center'>
+              <Col className='record-box'>
+                <h1>GAME OVER</h1>
+                <hr />
+                <h6>FINAL SCORE</h6>
+                <h5>{this.props.score}</h5>
+                <ScoreForm
+                  // saveScore={this.saveScore}
+                  score={this.props.score}
+                  level={this.props.level}
+                  successRedirect={this.successRedirect}
+                />
+              </Col>
+            </Row>
+            <Row className='justify-content-center text-center'>
+              <ListGroup>
+                <ListGroupItem as={Button} className='btn-default' onClick={() => this.props.newGame()}>
+                  Play Again
             </ListGroupItem>
-            <ListGroupItem as={Link} action variant="default" className='btn-success' to="./highscore">
-              High Scores
+                <ListGroupItem as={Link} action variant="default" className='btn-default' to="./highscore">
+                  High Scores
             </ListGroupItem>
-          </ListGroup>
-        </Row>
-      </Container>
+              </ListGroup>
+            </Row>
+          </Container>
+        )
     )
   }
 

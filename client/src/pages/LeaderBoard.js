@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Button,
   Container,
   Jumbotron,
   ListGroup,
@@ -15,7 +14,7 @@ import API from '../utils/API';
 class LeaderBoard extends Component {
 
   state = {
-    topTen: [],
+    topFive: [],
     nullData: {
       name: "n/a",
       score: "n/a",
@@ -29,17 +28,16 @@ class LeaderBoard extends Component {
 
     API.getScores()
       .then(res => {
-        console.log(res.data)
 
+        // will only capture 5 thanks to SQL definition
         res.data.forEach(score => {
           allScores.push(score);
         });
 
         this.setState({
-          topTen: allScores
+          topFive: allScores
         })
 
-        console.log(this.state.topTen)
       })
       .catch(err => console.log(err))
   }
@@ -52,44 +50,50 @@ class LeaderBoard extends Component {
       <Container>
         <Jumbotron>
           <Row className='justify-content-center text-center'>
-            <h1>Leader Board</h1>
+            <Col>
+              <h1>LEADER BOARD</h1>
+              <hr />
+            </Col>
           </Row>
           <Row className='justify-content-center text-center'>
-            <Table striped bordered hover variant='dark'>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Username</th>
-                  <th>Score</th>
-                  <th>Level</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  this.state.topTen.length > 0 ?
-                    (this.state.topTen.map(data => {
-                      return (
+            <Col>
+
+              <Table striped bordered hover variant='dark'>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                    <th>Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    this.state.topFive.length > 0 ?
+                      (this.state.topFive.map(data => {
+                        return (
+                          <tr key={count += 1}>
+                            <td>{count}</td>
+                            <td>{data.name}</td>
+                            <td>{data.score}</td>
+                            <td>{data.level}</td>
+                          </tr>
+                        )
+                      }))
+                      :
+                      (
                         <tr>
-                          <td>{count += 1}</td>
-                          <td>{data.name}</td>
-                          <td>{data.score}</td>
-                          <td>{data.level}</td>
+                          <td>0</td>
+                          <td>{this.state.nullData.name}</td>
+                          <td>{this.state.nullData.score}</td>
+                          <td>{this.state.nullData.level}</td>
                         </tr>
                       )
-                    }))
-                    :
-                    (
-                      <tr>
-                        <td>0</td>
-                        <td>{this.state.nullData.name}</td>
-                        <td>{this.state.nullData.score}</td>
-                        <td>{this.state.nullData.level}</td>
-                      </tr>
-                    )
 
-                }
-              </tbody>
-            </Table>
+                  }
+                </tbody>
+              </Table>
+            </Col>
           </Row>
           <Row className='justify-content-center text-center'>
             <ListGroup>
