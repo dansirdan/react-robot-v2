@@ -11,7 +11,7 @@ import {
 
 function Home() {
   return (
-    <Container className='main-container'>
+    <Container className='main-container home'>
       <Jumbotron>
         <Row className="justify-content-center text-center">
           <Col>

@@ -184,6 +184,25 @@ class Game extends Component {
 
   // ...does just that
   changeTurn = str => {
+    // switch (str) {
+    //   case "correct":
+    //     this.setState({
+    //       robotTalk: "VeRy smARt HuMAn"
+    //     })
+    //     break;
+    //   case "incorrect":
+    //     this.setState({
+    //       robotTalk: "Wow...ThAt was, something."
+    //     })
+    //     break;
+    //   case "level-up":
+    //     this.setState({
+    //       robotTalk: "YoU HaVe reCievEd an upgrade."
+    //     })
+    //     break;
+    //   default:
+    //     break;
+    // }
     this.setState({
       turn: str
     })
@@ -281,19 +300,19 @@ class Game extends Component {
           }
 
           <Row>
-            <Col lg='3' md='3' sm='2' />
+            <Col lg='3' md='3' sm='1' />
             <Col lg='6' md='6' sm='8'>
               {this.handleGameMode()}
             </Col>
-            <Col lg='3' md='3' sm='2' />
+            <Col lg='3' md='3' sm='1' />
           </Row>
-          <Row>
+          {/* <Row>
             <Col>
               <RobotTalk
                 robotTalk={this.state.robotTalk}
               />
             </Col>
-          </Row>
+          </Row> */}
         </Jumbotron>
       </Container>
     );

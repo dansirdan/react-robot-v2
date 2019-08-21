@@ -18,9 +18,9 @@ class Correct extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className='results-square'>
         <Row className='justify-content-center text-center'>
-          <ListGroup>
+          <ListGroup className='center-this'>
             <ListGroupItem variant="light">
               That Was Correct
             </ListGroupItem>

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Tutorial from './pages/Tutorial';
 import Game from './pages/Game';
 import LeaderBoard from './pages/LeaderBoard';
+import Footer from './components/Footer';
 
 import './App.css';
 
@@ -34,6 +35,7 @@ class App extends Component {
             component={LeaderBoard}
           />
         </Switch>
+        <Footer />
       </Router>
     )
   }
