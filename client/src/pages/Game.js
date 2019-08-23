@@ -300,11 +300,11 @@ class Game extends Component {
           }
 
           <Row>
-            <Col lg='3' md='3' sm='1' />
-            <Col lg='6' md='6' sm='8'>
+            <Col lg='3' md='3' sm='auto'> </Col>
+            <Col lg='6' md='6' sm='10'>
               {this.handleGameMode()}
             </Col>
-            <Col lg='3' md='3' sm='1' />
+            <Col lg='3' md='3' sm='auto'> </Col>
           </Row>
           {/* <Row>
             <Col>
